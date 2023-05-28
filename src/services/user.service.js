@@ -1,14 +1,15 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "https://localhost:7000/api/UserProfile/";
+const API_DOMAIN = process.env.REACT_APP_API_DOMAIN;
+const API_URL = `${API_DOMAIN}/Auth/`;
 
 const getPublicContent = () => {
   return axios.get(API_URL + "all"); // all
 };
 
 const getUserBoard = () => {
-  return axios.get(API_URL + "UsersListAdmin", { headers: authHeader() });
+  return axios.get(API_URL + "allusers", { headers: authHeader() });
 };
 
 const getModeratorBoard = () => {

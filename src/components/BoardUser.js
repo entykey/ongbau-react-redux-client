@@ -10,7 +10,7 @@ const BoardUser = () => {
   useEffect(() => {
     UserService.getUserBoard()
       .then((response) => {
-        setUsers(response.data.users);
+        setUsers(response.data);
       })
       .catch((error) => {
         const errorMessage =
@@ -32,14 +32,14 @@ const BoardUser = () => {
   return (
     <div className="container">
       <header className="jumbotron">
-        <h1>All users in dotnet api</h1>
+        <h1 style={{color:"red"}}>Danh sách staffs đã cấp tài khoảng:</h1>
         {errorMessage ? (
           <h5>{errorMessage}</h5>
         ) : (
           users && users.length > 0 ? (
             users.map((u) => (
               <h5 style={{ marginTop: 20 }} key={u.id}>
-                {u.fullName} ({u.email}), Roles: {u.listroles}
+                {u.fullName} ({u.userName})
               </h5>
             ))
           ) : (

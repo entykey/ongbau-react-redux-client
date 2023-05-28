@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -9,6 +9,7 @@ import { clearMessage } from "../slices/message";
 
 const Login = () => {
   let navigate = useNavigate();
+  let location = useLocation();
 
   const [loading, setLoading] = useState(false);
 
@@ -20,6 +21,11 @@ const Login = () => {
   useEffect(() => {
     dispatch(clearMessage());
   }, [dispatch]);
+
+  // Store the previous page information in session storage
+  useEffect(() => {
+    sessionStorage.setItem("previousPage", location.pathname);
+  }, [location.pathname]);
 
   const initialValues = {
     username: "",
@@ -46,9 +52,13 @@ const Login = () => {
       });
   };
 
+
+  // if user is logged in but try to access this Login page:
+  
   if (isLoggedIn) {
     return <Navigate to="/profile" />;
   }
+
 
   return (
     <div className="col-md-12 login-form">

@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -15,10 +15,19 @@ import BoardAdmin from "./components/BoardAdmin";
 
 // OngBau components:
 import AddDrinkForm from "./components/AddDrinkForm";
+import DrinkTypes from "./components/DrinkTypes";
+import Order from "./components/Order";
 
 import { logout } from "./slices/auth";
 
 import EventBus from "./common/EventBus";
+
+const AppContext = React.createContext(null);
+
+export const useAppContext = () => {
+  return React.useContext(AppContext);
+};
+
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -49,74 +58,109 @@ const App = () => {
     };
   }, [currentUser, logOut]);
 
+
+  const [cartItems, setCartItems] = React.useState([]);
+  const addItemToCart = product => {
+    // check product
+    const existedProduct = cartItems.find(item => item.id === product.id);
+    if (existedProduct) {
+      setCartItems([
+        ...cartItems.filter(item => item.id !== product.id),
+        { ...existedProduct, quantity: (existedProduct.quantity || 0) + 1 },
+      ]);
+    } else {
+      setCartItems([...cartItems, { ...product, quantity: 1 }]);
+    }
+  };
+
+  const removeItemFromCart = product => {
+    const existedProduct = cartItems.find(item => item.id === product.id);
+    if (existedProduct && existedProduct.quantity === 1) {
+      return setCartItems([...cartItems.filter(item => item.id !== product.id)]);
+    }
+    if (existedProduct) {
+      setCartItems([
+        ...cartItems.filter(item => item.id !== product.id),
+        { ...existedProduct, quantity: (existedProduct.quantity || 0) - 1 },
+      ]);
+    }
+  };
+
+
   return (
-    <Router>
-      <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/"} className="navbar-brand">
-            OngBau Order
-          </Link>
-          <div className="navbar-nav mr-auto">
-            
-            <li className="nav-item">
-              <Link to={"/home"} className="nav-link">
-                Home
-              </Link>
-            </li>
+    <AppContext.Provider
+      value={{
+        cartItems: cartItems.sort((p1, p2) => p1.name.localeCompare(p2.name)),
+        addItemToCart,
+        removeItemFromCart
+      }}>
+      <Router>
+        <div>
+          <nav className="navbar navbar-expand navbar-dark bg-dark">
+            <Link to={"/"} className="navbar-brand">
+              OngBau Order
+            </Link>
+            <div className="navbar-nav mr-auto">
 
-            {currentUser && (
               <li className="nav-item">
-                <Link to={"/staff/adddrinkform"} className="nav-link">
-                  Add Drink
+                <Link to={"/home"} className="nav-link">
+                  Home
                 </Link>
               </li>
-            )}
-
-            {showModeratorBoard && (
               <li className="nav-item">
-                <Link to={"/mod"} className="nav-link">
-                  Moderator Board
+                <Link to={"/menu"} className="nav-link">
+                  Menu
                 </Link>
               </li>
-            )}
 
-            {showAdminBoard && (
-              <li className="nav-item">
-                <Link to={"/admin"} className="nav-link">
-                  Admin Board
-                </Link>
-              </li>
-            )}
+              {currentUser && (
+                <li className="nav-item">
+                  <Link to={"/staff/adddrinkform"} className="nav-link">
+                    Add Drink
+                  </Link>
+                </li>
+              )}
 
-            {currentUser && (
-              <li className="nav-item">
-                <Link to={"/user"} className="nav-link">
-                  User
-                </Link>
-              </li>
-            )}
-          </div>
+              {showModeratorBoard && (
+                <li className="nav-item">
+                  <Link to={"/mod"} className="nav-link">
+                    Moderator Board
+                  </Link>
+                </li>
+              )}
 
-          {currentUser ? (
+              {showAdminBoard && (
+                <li className="nav-item">
+                  <Link to={"/admin"} className="nav-link">
+                    Admin Board
+                  </Link>
+                </li>
+              )}
+
+              {currentUser && (
+                <li className="nav-item">
+                  <Link to={"/user"} className="nav-link">
+                    Staffs
+                  </Link>
+                </li>
+              )}
+            </div>
+
+            {currentUser ? (
               <div className="navbar-nav ml-auto">
                 <div className="nav-item dropdown">
-                  {/* <a href="#" data-toggle="dropdown" className="nav-item nav-link dropdown-toggle user-action"> */}
-                  <a href="#" data-toggle="dropdown" className="nav-item nav-link">
-                    <img
-                      style={{ borderRadius: '50%', width: '30px', height: '30px', margin: 'auto 10px auto 10px', }}
-                      src="https://github.com/entykey.png"
-                      className="avatar"
-                      alt="Avatar"
-                    />
-                    {currentUser ? currentUser.username : "cant get name"}
+                  <a href="/profile" data-toggle="dropdown" className="nav-item nav-link">
+                    <div className="d-flex align-items-center"> {/* Add a container for the avatar and username */}
+                      <img
+                        style={{ borderRadius: '50%', width: '30px', height: '30px', marginRight: '5px' }} // Adjust margin
+                        src="https://github.com/entykey.png"
+                        className="avatar"
+                        alt="Avatar"
+                      />
+                      <span>{currentUser.user.userName}</span> {/* Display the username */}
+                    </div>
                   </a>
-                  {/* <div className="dropdown-menu">
-                    <a href="#" className="dropdown-item"><i className="fa fa-user-o"></i> Profile</a>
-                    <a href="#" className="dropdown-item"><i className="fa fa-calendar-o"></i> Calendar</a>
-                    <a href="#" className="dropdown-item"><i className="fa fa-sliders"></i> Settings</a>
-                    <div className="divider dropdown-divider"></div>
-                    <a href="#" className="dropdown-item"><i className="material-icons">&#xE8AC;</i> Logout</a>
-                  </div> */}
+                  {/* Dropdown menu */}
                 </div>
 
                 <li className="nav-item">
@@ -138,32 +182,48 @@ const App = () => {
                   </Link>
                 </li>
 
-                <li className="nav-item">
-                  <Link to={"/register"} className="nav-link">
-                    Sign Up
-                  </Link>
-                </li>
+                {/* <li className="nav-item">
+                    <Link to={"/register"} className="nav-link">
+                      Sign Up
+                    </Link>
+                  </li> */}
               </div>
             )}
-        </nav>
 
-        <div className="container mt-3">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/user" element={<BoardUser />} />
-            <Route path="/mod" element={<BoardModerator />} />
-            <Route path="/admin" element={<BoardAdmin />} />
+            {/* Cart */}
+            <Link to="/order" className="checkoutButton">
+              <img
+                style={{ borderRadius: '50%', width: '30px', height: '30px', marginRight: '5px' }}
+                src="https://cdn-icons-png.flaticon.com/512/2038/2038792.png"
+                alt="Checkout"
+              />
+              {cartItems.length > 0 && (
+                <span className="badge">{cartItems.length}</span>
+              )}
+            </Link>
 
-            {/* OngBau routes */}
-            <Route path="/staff/adddrinkform" element={<AddDrinkForm />} />
-          </Routes>
+          </nav>
+
+          <div className="container mt-3">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              {/* <Route path="/register" element={<Register />} /> */}
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/user" element={<BoardUser />} />
+              <Route path="/mod" element={<BoardModerator />} />
+              <Route path="/admin" element={<BoardAdmin />} />
+
+              {/* OngBau routes */}
+              <Route path="/menu" element={<DrinkTypes />} />
+              <Route path="/order" element={<Order />} />
+              <Route path="/staff/adddrinkform" element={<AddDrinkForm />} />
+            </Routes>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </AppContext.Provider>
   );
 };
 

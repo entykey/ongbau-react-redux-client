@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from "react-redux";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import authHeader from '../services/auth-header';
 
 const API_DOMAIN = process.env.REACT_APP_API_DOMAIN;
+
 
 const AddDrinkForm = () => {
     const [drinkTypes, setDrinkTypes] = useState([]);
@@ -98,6 +100,16 @@ const AddDrinkForm = () => {
             }
         }
     };
+
+    const { isLoggedIn } = useSelector((state) => state.auth);
+    if (!isLoggedIn) {
+        return(
+            <div style={{color:"red"}}>
+                <h1>Access Denied</h1>
+                <p>Nếu bạn là staff, vui lòng đăng nhập để ủy quyền!</p>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">

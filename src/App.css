@@ -31,3 +31,47 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+/* appheader checkout button */
+.groupText {
+  flex: 1;
+  margin-left: 12px;
+}
+
+.nameDisplay {
+  font-size: 16px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.desc {
+  font-size: 12px;
+  color: #A1A1A1;
+  margin-top: 4px;
+}
+
+.checkoutButton {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  background-color: red;
+  aspect-ratio: 1;
+  width: 20px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: -5px;
+  top: -5px;
+}
+
+.badgeText {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+/* end of cart appheader checkout btn */

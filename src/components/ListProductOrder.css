@@ -1,0 +1,65 @@
+.listProductOrder {
+    padding: 14px 0;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+}
+
+.price {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.priceView {
+    font-size: 12px;
+    color: #A1A1A1;
+    flex: 1;
+}
+
+.name {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.category {
+    font-size: 9px;
+    margin-top: 6px;
+}
+
+.itemBody {
+    flex: 1;
+    padding-left: 8px;
+}
+
+.textHeader {
+    flex: 1;
+}
+
+.groupAction {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.quantity {
+    font-size: 13px;
+    padding: 0 8px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.img {
+    height: 80px;
+    width: 120px;
+}
+
+.hr {
+    height: 18px;
+}
