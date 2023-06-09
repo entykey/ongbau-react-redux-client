@@ -1,6 +1,7 @@
 <h1 align="center">☕ Ongbau Order app using React & .NET Core WebApi🖥️📝</h1>
 
 - JWT Authentication Flow for User Login, Register, Logout
+- SignalR communication to SPA
 - Project Structure for React Redux JWT Authentication, Router, Axios
 - Working with Redux Actions, Reducers, Store using redux-toolkit
 - Creating React Function Components with Hooks & Form Validation
