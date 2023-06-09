@@ -13,6 +13,7 @@ For more detail, please visit:
 
 # API (Server) ⚙️
 ## Endpoints
+**Note:** API is private repository, for job interview purpose only.
 ![api-endpoints](api-endpoints.png)
 
 ## Database Diagram
