@@ -77,7 +77,7 @@ Open [http://localhost:8081](http://localhost:8081) to view it in the browser.
 
 The page will reload if you make edits.
 
-### Related Posts
+### Preferences
 > [In-depth Introduction to JWT-JSON Web Token](https://www.bezkoder.com/jwt-json-web-token/)
 
 > [React CRUD example using Hooks](https://www.bezkoder.com/react-hooks-crud-axios-api/)
