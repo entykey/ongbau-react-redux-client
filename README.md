@@ -16,7 +16,7 @@
 
 # API (Server) ⚙️
 ## Endpoints
-**Note:** API is private repository, for job interview purpose only.
+**Note:** API is private repository, for job employment purpose only.
 ![api-endpoints](api-endpoints.png)
 
 ## Database Diagram
