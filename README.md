@@ -33,9 +33,6 @@ Cart/Checkout request page with selected drinks:
 Checkout success alert after successfully send realtime request to staff through hub endpoint:
 ![Checkout success](checkout-success.png)
 
-Staff Receive Order Requests Page with request received by user though hub endpoint:
-![checkout-request-received](checkout-request-received.png):
-
 
 Staff Login Page:
 
@@ -45,6 +42,8 @@ For Authorized account login (Staff), the navigation bar will change:
 
 ![Staff Profile Page](staff-profile-page.png)
 
+Staff Receive Order Requests Page with request received by user though hub endpoint:
+![checkout-request-received](checkout-request-received.png):
 
 
 ### Set port
