@@ -11,15 +11,15 @@ For more detail, please visit:
 > [Nguyen Huu Anh Tuan dev profile](nguyenhuuanhtuan.netlify.app)
 
 Home Page:
-![Home Page](home-page.PNG)
+![Home Page](home-page.png)
 
 Staff Login Page:
 
-![Staff Login Page](staff-login-page.PNG)
+![Staff Login Page](staff-login-page.png)
 
-For Authorized account login (Moderator for example), the navigation bar will change:
+For Authorized account login (Staff), the navigation bar will change:
 
-![react-redux-login-register-example-redux-toolkit-authorization](react-redux-login-register-example-redux-toolkit-authorization.png)
+![Staff Profile Page](staff-profile-page.png)
 
 Related Posts (without redux-toolkit):
 > [React Redux Login, Logout, Registration example with Hooks](https://www.bezkoder.com/react-hooks-redux-login-registration-example/)
