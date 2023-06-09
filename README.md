@@ -1,4 +1,4 @@
-## React Redux Login example using Redux-toolkit & Hooks
+<h1 align="center">☕ Ongbau Order app using React & .NET Core WebApi🖥️📝</h1>
 
 - JWT Authentication Flow for User Login, Register, Logout
 - Project Structure for React Redux JWT Authentication, Router, Axios
@@ -8,33 +8,28 @@
 - Dynamic Navigation Bar in React App
 
 For more detail, please visit:
-> [React Redux Login & Registration example with Redux-toolkit & Hooks](https://www.bezkoder.com/react-redux-login-example-toolkit-hooks/)
+> [Nguyen Huu Anh Tuan dev profile](nguyenhuuanhtuan.netlify.app)
 
-Signup Page:
+# API (Server) ⚙️
+## Endpoints
+![api-endpoints](api-endpoints.png)
 
-![react-redux-login-register-example-redux-toolkit-signup](react-redux-login-register-example-redux-toolkit-signup.png)
+## Database Diagram
+![api-endpoints](db-diagram.PNG)
 
-Login Page:
+# React SPA (Client)
+Home Page:
+![Home Page](home-page.png)
 
-![react-redux-login-register-example-redux-toolkit-login](react-redux-login-register-example-redux-toolkit-login.png)
+Staff Login Page:
 
-For Authorized account login (Moderator for example), the navigation bar will change:
+![Staff Login Page](staff-login-page.png)
 
-![react-redux-login-register-example-redux-toolkit-authorization](react-redux-login-register-example-redux-toolkit-authorization.png)
+For Authorized account login (Staff), the navigation bar will change:
 
-Related Posts (without redux-toolkit):
-> [React Redux Login, Logout, Registration example with Hooks](https://www.bezkoder.com/react-hooks-redux-login-registration-example/)
+![Staff Profile Page](staff-profile-page.png)
 
-> [React Hooks: JWT Authentication & Authorization (without Redux) example](https://www.bezkoder.com/react-hooks-jwt-auth/)
 
-> [React Redux Login, Logout, Registration example (using React Components)](https://www.bezkoder.com/react-redux-jwt-auth/)
-
-Fullstack (JWT Authentication & Authorization example):
-> [React + Spring Boot](https://www.bezkoder.com/spring-boot-react-jwt-auth/)
-
-> [React + Node.js Express](https://www.bezkoder.com/react-express-authentication-jwt/)
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Set port
 .env
@@ -82,7 +77,7 @@ Open [http://localhost:8081](http://localhost:8081) to view it in the browser.
 
 The page will reload if you make edits.
 
-### Related Posts
+### Preferences
 > [In-depth Introduction to JWT-JSON Web Token](https://www.bezkoder.com/jwt-json-web-token/)
 
 > [React CRUD example using Hooks](https://www.bezkoder.com/react-hooks-crud-axios-api/)
