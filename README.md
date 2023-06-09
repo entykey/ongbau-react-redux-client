@@ -17,6 +17,9 @@ For more detail, please visit:
 ## Database Diagram
 ![api-endpoints](db-diagram.PNG)
 
+## SignalR hub for realtime communication
+![OngBauOrder-client-server-diagram](OngBauOrder-client-server-diagram.png)
+
 # React SPA (Client)
 Home Page:
 ![Home Page](home-page.png)
