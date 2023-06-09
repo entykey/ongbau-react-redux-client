@@ -8,6 +8,7 @@
 - React Function Components for accessing protected Resources (Authorization)
 - Dynamic Navigation Bar in React App
 
+[![Techs](https://skillicons.dev/icons?i=react,dotnet,bootstrap,cs&perline=6)](https://skillicons.dev)
 For more detail, please visit:
 > [Nguyen Huu Anh Tuan dev profile](nguyenhuuanhtuan.netlify.app)
 
