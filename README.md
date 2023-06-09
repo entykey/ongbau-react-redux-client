@@ -10,6 +10,14 @@
 For more detail, please visit:
 > [Nguyen Huu Anh Tuan dev profile](nguyenhuuanhtuan.netlify.app)
 
+# API (Server) ⚙️
+## Endpoints
+![api-endpoints](api-endpoints.png)
+
+## Database Diagram
+![api-endpoints](db-diagram.PNG)
+
+# React SPA (Client)
 Home Page:
 ![Home Page](home-page.png)
 
@@ -21,19 +29,7 @@ For Authorized account login (Staff), the navigation bar will change:
 
 ![Staff Profile Page](staff-profile-page.png)
 
-Related Posts (without redux-toolkit):
-> [React Redux Login, Logout, Registration example with Hooks](https://www.bezkoder.com/react-hooks-redux-login-registration-example/)
 
-> [React Hooks: JWT Authentication & Authorization (without Redux) example](https://www.bezkoder.com/react-hooks-jwt-auth/)
-
-> [React Redux Login, Logout, Registration example (using React Components)](https://www.bezkoder.com/react-redux-jwt-auth/)
-
-Fullstack (JWT Authentication & Authorization example):
-> [React + Spring Boot](https://www.bezkoder.com/spring-boot-react-jwt-auth/)
-
-> [React + Node.js Express](https://www.bezkoder.com/react-express-authentication-jwt/)
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Set port
 .env
