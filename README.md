@@ -1,4 +1,4 @@
-## React Redux Login example using Redux-toolkit & Hooks
+<h1 align="center">☕ Ongbau Order app using React & .NET Core WebApi🖥️📝</h1>
 
 - JWT Authentication Flow for User Login, Register, Logout
 - Project Structure for React Redux JWT Authentication, Router, Axios
@@ -8,15 +8,14 @@
 - Dynamic Navigation Bar in React App
 
 For more detail, please visit:
-> [React Redux Login & Registration example with Redux-toolkit & Hooks](https://www.bezkoder.com/react-redux-login-example-toolkit-hooks/)
+> [Nguyen Huu Anh Tuan dev profile](nguyenhuuanhtuan.netlify.app)
 
-Signup Page:
+Home Page:
+![Home Page](home-page.PNG)
 
-![react-redux-login-register-example-redux-toolkit-signup](react-redux-login-register-example-redux-toolkit-signup.png)
+Staff Login Page:
 
-Login Page:
-
-![react-redux-login-register-example-redux-toolkit-login](react-redux-login-register-example-redux-toolkit-login.png)
+![Staff Login Page](staff-login-page.PNG)
 
 For Authorized account login (Moderator for example), the navigation bar will change:
 
