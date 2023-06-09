@@ -11,7 +11,7 @@
 ## Techs involed
 [![Techs](https://skillicons.dev/icons?i=react,dotnet,bootstrap,cs&perline=6)](https://skillicons.dev)
 
-**For more detail, please visit:
+**For more detail, please visit:**
 > [Nguyen Huu Anh Tuan dev profile](nguyenhuuanhtuan.netlify.app)
 
 # API (Server) ⚙️
