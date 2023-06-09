@@ -14,9 +14,11 @@ import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
 
 // OngBau components:
-import AddDrinkForm from "./components/AddDrinkForm";
+import AddDrinkForm from "./components/Staff/AddDrinkForm";
 import DrinkTypes from "./components/DrinkTypes";
+import DrinkTypesPage from "./components/Staff/DrinkTypesPage";
 import Order from "./components/Order";
+import CheckoutRequests from "./components/Staff/CheckoutRequests";
 
 import { logout } from "./slices/auth";
 
@@ -27,6 +29,27 @@ const AppContext = React.createContext(null);
 export const useAppContext = () => {
   return React.useContext(AppContext);
 };
+
+const Footer = () => {
+  return (
+
+    <footer className="w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
+      <span className="text-sm font-medium text-gray-500 sm:text-center dark:text-gray-400">
+        OngbauOrder © 2023 developed by{" "}
+        <a href="https://nguyenhuuanhtuan.netlify.app/" target="_blank" className="hover:underline">
+          Nguyễn Hữu Anh Tuấn
+        </a>
+        . All Rights Reserved. Windows Server 2022 - Microsoft IIS 10 - ASP.NET Core 7
+      </span>
+      <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        {/* Your list items */}
+      </ul>
+    </footer>
+
+
+  );
+};
+
 
 
 const App = () => {
@@ -92,7 +115,8 @@ const App = () => {
       value={{
         cartItems: cartItems.sort((p1, p2) => p1.name.localeCompare(p2.name)),
         addItemToCart,
-        removeItemFromCart
+        removeItemFromCart,
+        setCartItems
       }}>
       <Router>
         <div>
@@ -115,8 +139,24 @@ const App = () => {
 
               {currentUser && (
                 <li className="nav-item">
+                  <Link to={"/staff/checkoutrequests"} className="nav-link">
+                    Nhận order
+                  </Link>
+                </li>
+              )}
+
+              {currentUser && (
+                <li className="nav-item">
                   <Link to={"/staff/adddrinkform"} className="nav-link">
-                    Add Drink
+                    Thêm đồ uống
+                  </Link>
+                </li>
+              )}
+
+              {currentUser && (
+                <li className="nav-item">
+                  <Link to={"/staff/drinktypespage"} className="nav-link">
+                    QL danh mục
                   </Link>
                 </li>
               )}
@@ -169,9 +209,9 @@ const App = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="/login" className="nav-link" onClick={logOut}>
+                  <Link to={"/login"} className="nav-link" onClick={logOut}>
                     LogOut
-                  </a>
+                  </Link>
                 </li>
               </div>
             ) : (
@@ -219,10 +259,13 @@ const App = () => {
               <Route path="/menu" element={<DrinkTypes />} />
               <Route path="/order" element={<Order />} />
               <Route path="/staff/adddrinkform" element={<AddDrinkForm />} />
+              <Route path="/staff/checkoutrequests" element={<CheckoutRequests />} />
+              <Route path="/staff/drinktypespage" element={<DrinkTypesPage />} />
             </Routes>
           </div>
         </div>
       </Router>
+      <Footer />
     </AppContext.Provider>
   );
 };

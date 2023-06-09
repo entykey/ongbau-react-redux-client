@@ -7,6 +7,9 @@ import * as Yup from "yup";
 import { login } from "../slices/auth";
 import { clearMessage } from "../slices/message";
 
+// ongbau account logo:
+import accountLogo from '../assets/Logo-ong_LOccitane.jpg';
+
 const Login = () => {
   let navigate = useNavigate();
   let location = useLocation();
@@ -45,7 +48,7 @@ const Login = () => {
       .unwrap()
       .then(() => {
         navigate("/profile");
-        window.location.reload();
+        //window.location.reload();
       })
       .catch(() => {
         setLoading(false);
@@ -54,7 +57,7 @@ const Login = () => {
 
 
   // if user is logged in but try to access this Login page:
-  
+
   if (isLoggedIn) {
     return <Navigate to="/profile" />;
   }
@@ -66,7 +69,8 @@ const Login = () => {
       <div>
         {/* <h3 className="">Login</h3> */}
         <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+          //src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+          src={accountLogo}
           alt="profile-img"
           className="profile-img-card"
         />
@@ -83,7 +87,7 @@ const Login = () => {
               <Field
                 name="username"
                 type="text"
-                className="bg-gray-50 w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-indigo-500 transition-colors"
+                className="bg-gray-50 w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-yellow-400 transition-colors focus:ring-offset-2"
               />
               <ErrorMessage
                 name="username"
@@ -99,7 +103,7 @@ const Login = () => {
               <Field
                 name="password"
                 type="password"
-                className="bg-gray-50 w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-indigo-500 transition-colors"
+                className="bg-gray-50 w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-yellow-400 transition-colors"
               />
               <ErrorMessage
                 name="password"
@@ -108,19 +112,21 @@ const Login = () => {
               />
             </div>
 
-            <button class="w-full py-2.5 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center focus:ring focus:ring-violet-300" disabled={loading}>
+            {/* <button class="w-full py-2.5 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center focus:ring focus:ring-violet-300 focus:ring-offset-2" */}
+            <button class="w-full py-2.5 font-medium text-white bg-yellow-300 hover:bg-yellow-500 rounded-xl border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center focus:ring focus:ring-yellow-300 focus:ring-offset-2"
+              disabled={loading}>
               {loading ? (
                 <span className="spinner-border spinner-border-sm"></span>
-              ) : 
-              (
-                <>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-              </svg>
-              <span>Login</span></>)
+              ) :
+                (
+                  <>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                    </svg>
+                    <span>Login</span></>)
               }
 
-              
+
             </button>
 
             {/* <div className="mb-4">

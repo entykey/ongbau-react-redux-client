@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import axios from 'axios';
+import drinkTypeService from '../../services/drinktype.service';
+import AddDrinkTypeForm from './AddDrinkTypeForm';
 import Swal from 'sweetalert2';
-import authHeader from '../services/auth-header';
+import authHeader from '../../services/auth-header';
+//import drinkTypeService from '../../services/drinktype.service';
 
 const API_DOMAIN = process.env.REACT_APP_API_DOMAIN;
 
@@ -17,13 +20,17 @@ const AddDrinkForm = () => {
         drinkTypeId: '',
     });
 
+    const [showAddDrinkTypeForm, setShowAddDrinkTypeForm] = useState(false);
+
     // Fetch drink types
     useEffect(() => {
         const fetchDrinkTypes = async () => {
             try {
-                const response = await fetch(`${API_DOMAIN}/DrinkType/getall`);
-                const data = await response.json();
+                //const response = await axios.get(`${API_DOMAIN}/api/DrinkType/getall`);
+                const response = await drinkTypeService.getAll();
+                const data = response.data;
                 setDrinkTypes(data);
+                //console.log('drinktypes:', data);
             } catch (error) {
                 console.error('Error fetching drink types:', error);
             }
@@ -31,6 +38,7 @@ const AddDrinkForm = () => {
 
         fetchDrinkTypes();
     }, []);
+
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -41,7 +49,7 @@ const AddDrinkForm = () => {
 
         try {
             const response = await axios.post(
-                `${API_DOMAIN}/Drink/add`,
+                `${API_DOMAIN}/api/Drink/add`,
                 formData,
                 { headers: authHeader() }
             );
@@ -78,7 +86,7 @@ const AddDrinkForm = () => {
                 // You can add additional logic or state updates as needed
 
             }
-            else if (error.response && error.response.status === 401){
+            else if (error.response && error.response.status === 401) {
                 // Display generic error message using SweetAlert
                 Swal.fire({
                     icon: 'error',
@@ -103,13 +111,17 @@ const AddDrinkForm = () => {
 
     const { isLoggedIn } = useSelector((state) => state.auth);
     if (!isLoggedIn) {
-        return(
-            <div style={{color:"red"}}>
+        return (
+            <div style={{ color: "red" }}>
                 <h1>Access Denied</h1>
                 <p>Nếu bạn là staff, vui lòng đăng nhập để ủy quyền!</p>
             </div>
         );
     }
+
+    const toggleAddDrinkTypeForm = () => {
+        setShowAddDrinkTypeForm(!showAddDrinkTypeForm);
+    };
 
     return (
         <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
@@ -129,11 +141,29 @@ const AddDrinkForm = () => {
                             </div>
                         </div>
 
+                        {/* Toggle show/hide the AddDrinkTypeForm */}
+                        <div className="flex items-center">
+                            <input
+                                type="checkbox"
+                                id="showAddDrinkTypeForm"
+                                name="showAddDrinkTypeForm"
+                                checked={showAddDrinkTypeForm}
+                                onChange={toggleAddDrinkTypeForm}
+                                className="mr-2"
+                            />
+                            <label htmlFor="showAddDrinkTypeForm" className="text-sm font-medium text-gray-900">
+                                Thêm danh mục
+                            </label>
+                        </div>
+
+                        {/* Add drink type form */}
+                        {showAddDrinkTypeForm && <AddDrinkTypeForm />}
+
                         <form className="divide-y divide-gray-200" onSubmit={handleSubmit}>
                             <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                                 <div className="flex flex-col">
                                     <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900">
-                                        Drink Name
+                                        Tên đồ uống (Drink Name)
                                     </label>
                                     <input
                                         type="text"
@@ -149,7 +179,7 @@ const AddDrinkForm = () => {
 
                                 <div className="flex flex-col">
                                     <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-900">
-                                        Price</label>
+                                        Giá (Price) in VND</label>
                                     <input
                                         type="number"
                                         id="price"
@@ -167,7 +197,7 @@ const AddDrinkForm = () => {
 
                                 <div className="flex flex-col">
                                     <label htmlFor="imageUrl" className="block mb-2 text-sm font-medium text-gray-900">
-                                        Image URL
+                                        Link ảnh (Image URL)
                                     </label>
                                     <input
                                         type="text"
@@ -183,7 +213,7 @@ const AddDrinkForm = () => {
 
                                 <div className="flex flex-col">
                                     <label htmlFor="drinkTypeId" className="block mb-2 text-sm font-medium text-gray-900">
-                                        Drink Type
+                                        Danh mục (Drink Type)
                                     </label>
                                     <select
                                         id="drinkTypeId"

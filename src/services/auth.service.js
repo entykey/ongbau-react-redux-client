@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_DOMAIN = process.env.REACT_APP_API_DOMAIN;
-const API_URL = `${API_DOMAIN}/Auth/`;
+const API_URL = `${API_DOMAIN}/api/Auth/`;
 
 const register = (username, email, password) => {
   return axios.post(API_URL + "register", {

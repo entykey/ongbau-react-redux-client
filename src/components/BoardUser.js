@@ -32,7 +32,7 @@ const BoardUser = () => {
   return (
     <div className="container">
       <header className="jumbotron">
-        <h1 style={{color:"red"}}>Danh sách staffs đã cấp tài khoảng:</h1>
+        <h1 style={{color:"red"}}>Danh sách staffs đã cấp tài khoản:</h1>
         {errorMessage ? (
           <h5>{errorMessage}</h5>
         ) : (
