@@ -24,6 +24,19 @@ For more detail, please visit:
 Home Page:
 ![Home Page](home-page.png)
 
+Menu Page with drinks by categories:
+![Menu Page](menu-page.png)
+
+Cart/Checkout request page with selected drinks:
+![Cart/Checkout Page](cart-checkout.png)
+
+Checkout success alert after successfully send realtime request to staff through hub endpoint:
+![Checkout success](checkout-success.png)
+
+Staff Receive Order Requests Page with request received by user though hub endpoint:
+![checkout-request-received](checkout-request-received.png):
+
+
 Staff Login Page:
 
 ![Staff Login Page](staff-login-page.png)
@@ -79,6 +92,23 @@ yarn start
 Open [http://localhost:8081](http://localhost:8081) to view it in the browser.
 
 The page will reload if you make edits.
+
+## 🤝 Collaborators
+
+We thank the following people who contributed to this project:
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/entykey">
+        <img src="https://github.com/entykey.png" width="100px;" alt="Nguyen Huu Anh Tuan display photo"/><br>
+        <sub>
+          <b>Nguyễn Hữu Anh Tuấn</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ### Preferences
 > [In-depth Introduction to JWT-JSON Web Token](https://www.bezkoder.com/jwt-json-web-token/)
