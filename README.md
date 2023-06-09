@@ -9,7 +9,7 @@
 - Dynamic Navigation Bar in React App
 
 ## Techs involed
-[![Techs](https://skillicons.dev/icons?i=react,dotnet,bootstrap,cs&perline=6)](https://skillicons.dev)
+[![Techs](https://skillicons.dev/icons?i=react,dotnet,redux,tailwind,bootstrap,cs&perline=6)](https://skillicons.dev)
 
 **For more detail, please visit:**
 > [Nguyen Huu Anh Tuan dev profile](nguyenhuuanhtuan.netlify.app)
